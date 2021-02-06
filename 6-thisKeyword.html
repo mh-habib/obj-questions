@@ -1,0 +1,35 @@
+<!-- 25-7 how to understand the this keyword -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This Keyword</title>
+</head>
+<body>
+    <h1>This is not confused anymore</h1>
+    <p onclick="this.innerText = 'You clicked'">I am paragraph don't click me.</p> 
+    <!-- 3. Here this means where it clicked -->
+
+    <script>
+        const myObject = {
+            name: 'Kuddus Ali',
+            getFullName: function(){
+                console.log(this);
+                return 'Mr. ' + this.name;
+            }
+        }
+        //myObject.getFullName();
+        const anotherObject = {
+            name: 'Biddut Ali'
+        }
+        anotherObject.getFullName = myObject.getFullName;
+        console.log(anotherObject.getFullName);
+        //1. This er value will determined by the left side of . (myObject/anotherObject)
+        //2. If there is nothing before . then this will return window
+        myObject.getFullName();
+        anotherObject.getFullName();
+    </script>
+</body>
+</html>
